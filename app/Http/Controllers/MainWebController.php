@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\DB;
 class MainWebController extends Controller {
 
     public function getPostTitle(){
-        $data = DB::connection("mysql2")->table("wpi9_posts")->get();
+        $data = DB::connection("mysql2")->table("wpi9_posts")->select('post_title')->orderBy('post_date', 'desc')->get();
 
-        $response['data'] = $data;
         $response['error'] = false;
         $response['message'] = 'Success';
+        $response['total_data'] = count($data);
+        $response['data'] = $data;
         return response()->json($response, 200);
     }
 
