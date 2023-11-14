@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 
-class MainWebController extends Controller {
+class PortalController extends Controller {
 
-    public function getPostTitle(){
-        $data = DB::connection("mysql-main-web")
-        ->table("wpi9_posts")
-        ->select('post_title')
-        ->where('post_type', '=', 'post')
-        ->orderBy('post_date', 'desc')->get();
+    public function getMasterStudents(){
+        $data = DB::connection("mysql-portal")
+        ->table("mahasiswa")
+        ->where('angkatan', '!=', '-')
+        ->orderBy('nim', 'desc')->get();
 
         $response['error'] = false;
         $response['message'] = 'Success';

@@ -19,6 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('request')->group(function(){
-    Route::get('/get-web-posts', [MainWebController::class, 'getPostTitle']);
+Route::prefix('main-web')->group(function(){
+    Route::get('/get-posts', [MainWebController::class, 'getPostTitle']);
 });
+
+Route::prefix('portal')->group(function(){
+    Route::get('/get-students', [MainWebController::class, 'getMasterStudents']);
+});
+
