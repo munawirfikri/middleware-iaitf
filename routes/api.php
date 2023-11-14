@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainWebController;
+use App\Http\Controllers\PortalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,6 @@ Route::prefix('main-web')->group(function(){
 });
 
 Route::prefix('portal')->group(function(){
-    Route::get('/get-students', [MainWebController::class, 'getMasterStudents']);
+    Route::get('/get-students', [PortalController::class, 'getMasterStudents']);
 });
 
