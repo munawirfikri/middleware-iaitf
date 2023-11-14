@@ -9,6 +9,9 @@ class PortalController extends Controller {
     public function getMasterStudents(){
         $data = DB::connection("mysql-portal")
         ->table("mahasiswa")
+        ->select(
+            'nim', 'nama', 'angkatan', 'prodi', 'dosen_pa'
+        )
         ->where('angkatan', '!=', '-')
         ->orderBy('nim', 'desc')->get();
 
